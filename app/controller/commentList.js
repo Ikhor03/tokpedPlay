@@ -17,7 +17,7 @@ export const addComment = async (req, res, next) => {
 export const getAllComments = async (req, res, next) => {
     try {
         const comments = await Comment.find();
-        res.status(200).json(comments);
+        res.status(200).json({ data: comments });
     } catch (error) {
         next(error); 
     }
@@ -56,7 +56,7 @@ export const deleteComment = async (req, res, next) => {
             return res.status(404).json({ message: 'Comment not found' });
         }
 
-        res.status(200).json(deletedComment);
+        res.status(204).json(deletedComment);
     } catch (error) {
         next(error); 
     }

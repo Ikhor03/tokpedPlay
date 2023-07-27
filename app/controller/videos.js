@@ -26,7 +26,7 @@ export const getAllVideos = async (req, res, next) => {
             return next(error);
         }
 
-        res.status(200).json(videos);
+        res.status(200).json({ data: videos });
     } catch (error) {
         next(error); 
     }
@@ -41,7 +41,7 @@ export const getVideoById = async (req, res, next) => {
         if (!video) {
             return res.status(404).json({ message: "Video not found" });
         }
-        res.status(200).json(video);
+        res.status(200).json( video);
     } catch (error) {
         next(error); 
     }
