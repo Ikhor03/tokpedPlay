@@ -28,9 +28,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // routing app
-app.use('api',videoRoute);
-app.use('api',productRoute);
-app.use('api',commentRoute);
+app.use('/api',videoRoute);
+app.use('/api',productRoute);
+app.use('/api',commentRoute);
 
 // Error handling middleware
 app.use(errorHandler);
