@@ -28,21 +28,20 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // routing app
-app.use(videoRoute);
-app.use(productRoute);
-app.use(commentRoute);
+app.use('api',videoRoute);
+app.use('api',productRoute);
+app.use('api',commentRoute);
 
 // Error handling middleware
+app.use(errorHandler);
 
 // home api
-app.use('/', function (req, res) {
+app.use('/api', function (req, res) {
     res.json({
         welcome: 'WELCOME TOKOPEDIA PLAY CLONE'
     })
 })
 
-// handlingError
-app.use(errorHandler);
 
 // running server
 app.listen(config.port, () => {
