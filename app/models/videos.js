@@ -3,11 +3,16 @@ import mongoose from "mongoose";
 const videoSchema = new mongoose.Schema({
     title : {
         required : [true, "title harus diisi"],
-        type : String
+        type : String,
+        maxlength: [100, 'Maksimal title adalah 100 karakter'],
+        minlength: [3, 'Minimal title adalah 3 karakter'],
     },
     seller : {
         required : true,
-        type : String
+        type : String,
+        maxlength: [100, 'Maksimal seller name adalah 100 karakter'],
+        minlength: [3, 'Minimal sellername adalah 3 karakter'],
+
     },
     hotOffer : {
         required : true,
