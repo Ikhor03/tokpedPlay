@@ -6,6 +6,7 @@ import errorHandler from "./app/middleware/errorHandler.js";
 import videoRoute from "./app/routes/videos.js";
 import productRoute from "./app/routes/products.js";
 import commentRoute from "./app/routes/commentList.js";
+import cors from 'cors';
 
 // connect to database
 mongoose.connect(config.mongoString);
@@ -23,6 +24,7 @@ database.once('connected', () => {
 const app = express();
 
 // use middlewares
+app.use(cors())
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -36,7 +38,7 @@ app.use('/api',commentRoute);
 app.use(errorHandler);
 
 // home api
-app.use('/api', function (req, res) {
+app.use('/', function (req, res) {
     res.json({
         welcome: 'WELCOME TOKOPEDIA PLAY CLONE'
     })
